@@ -47,7 +47,7 @@ export const tryLocalSignin = () => async dispatch => {
   }
 };
 
-const signout = () => async dispatch => {
+export const signout = () => async dispatch => {
   await AsyncStorage.removeItem('token');
   dispatch({ type: SIGNOUT });
   navigate('loginFlow');
