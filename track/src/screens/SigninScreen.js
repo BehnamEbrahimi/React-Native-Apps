@@ -9,6 +9,7 @@ import NavLink from '../components/NavLink';
 const SigninScreen = ({ errorMessage, signin, clearErrorMessage }) => {
   return (
     <View style={styles.container}>
+      {/* Other Navigation Events: onWillFocus, onDidFocus, onWillBlur, onDidBlur. Other way: refer to IndexScreen on the blog app */}
       <NavigationEvents onWillBlur={clearErrorMessage} />
       <AuthForm
         headerText="Sign In"

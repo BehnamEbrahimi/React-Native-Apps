@@ -1,27 +1,57 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Button } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
+import { ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
-// import {  } from '../actions';
+import { fetchTracks } from '../actions/trackActions';
 
-const TrackListScreen = ({ navigation }) => {
+const TrackListScreen = ({ navigation, fetchTracks, tracks }) => {
   return (
     <>
-      <Text>TrackListScreen</Text>
-      <Button
-        onPress={() => navigation.navigate('TrackDetail')}
-        title="Go to Track Detail"
+      <NavigationEvents onWillFocus={fetchTracks} />
+      <FlatList
+        style={{ marginTop: 20 }}
+        data={tracks}
+        keyExtractor={track => track._id}
+        renderItem={({ item: track }) => {
+          return (
+            <TouchableOpacity
+              onPress={() =>
+                navigation.navigate('TrackDetail', { _id: track._id })
+              }>
+              <ListItem
+                containerStyle={styles.track}
+                chevron
+                title={track.name}
+                titleStyle={styles.title}
+              />
+            </TouchableOpacity>
+          );
+        }}
       />
     </>
   );
 };
 
-const styles = StyleSheet.create({});
+TrackListScreen.navigationOptions = {
+  title: 'Tracks'
+};
+
+const styles = StyleSheet.create({
+  track: {
+    backgroundColor: 'rgba(228,60,63,1.0)',
+    margin: 5,
+    borderRadius: 10
+  },
+  title: {
+    color: 'white'
+  }
+});
 
 const mapStateToProps = state => {
   return {
-    user: state.auth.user
+    tracks: state.track.tracks
   };
 };
 
-export default connect(mapStateToProps, {})(TrackListScreen);
+export default connect(mapStateToProps, { fetchTracks })(TrackListScreen);

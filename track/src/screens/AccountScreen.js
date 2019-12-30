@@ -10,6 +10,7 @@ import { FontAwesome } from '@expo/vector-icons';
 const AccountScreen = ({ signout }) => {
   return (
     <>
+      {/* SafeAreaView is to make sure the content is not behind the status bar */}
       <SafeAreaView forceInset={{ top: 'always' }}>
         <Text style={{ fontSize: 48, textAlign: 'center' }}>
           Account Screen

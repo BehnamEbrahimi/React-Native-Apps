@@ -1,22 +1,42 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { StyleSheet, Text } from 'react-native';
 import { connect } from 'react-redux';
-// import {  } from '../actions';
+import MapView, { Polyline } from 'react-native-maps';
 
-const TrackDetailScreen = ({}) => {
+const TrackDetailScreen = ({ track }) => {
+  const initialCoords = track.locations[0].coords;
+
   return (
-    <View>
-      <Text>TrackDetailScreen</Text>
-    </View>
+    <>
+      <Text style={{ fontSize: 48 }}>{track.name}</Text>
+      <MapView
+        initialRegion={{
+          longitudeDelta: 0.01,
+          latitudeDelta: 0.01,
+          ...initialCoords
+        }}
+        style={styles.map}>
+        <Polyline
+          strokeWidth={5}
+          strokeColor="rgba(173,21,97,1.0)"
+          coordinates={track.locations.map(loc => loc.coords)}
+        />
+      </MapView>
+    </>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  map: {
+    height: 300
+  }
+});
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const _id = ownProps.navigation.getParam('_id');
+
   return {
-    user: state.auth.user
+    track: state.track.tracks.find(t => t._id === _id)
   };
 };
 
