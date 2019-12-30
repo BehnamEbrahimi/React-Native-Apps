@@ -18,8 +18,6 @@ const Map = ({ currentLocation, locations }) => {
     });
   };
 
-  // console.log(currentLocation.coords);
-
   return (
     <>
       <MapView

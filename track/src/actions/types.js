@@ -11,3 +11,4 @@ export const ADD_LOCATION = 'ADD_LOCATION';
 export const RESET = 'RESET';
 
 export const FETCH_TRACKS = 'FETCH_TRACKS';
+export const TRACK_SAVED = 'TRACK_SAVED';

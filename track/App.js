@@ -39,6 +39,7 @@ const switchNavigator = createSwitchNavigator({
         TrackDetail: TrackDetailScreen
       },
       {
+        initialRouteName: 'TrackList',
         defaultNavigationOptions: {
           title: 'Tracks',
           tabBarIcon: <FontAwesome name="th-list" size={20} />

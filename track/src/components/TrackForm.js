@@ -38,6 +38,8 @@ const TrackForm = ({
       <Spacer>
         {recording ? (
           <Button title="Stop" onPress={stopRecording} />
+        ) : locations.length ? (
+          <Button title="Resume Recording" onPress={startRecording} />
         ) : (
           <Button title="Start Recording" onPress={startRecording} />
         )}
