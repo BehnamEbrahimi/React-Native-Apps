@@ -23,15 +23,10 @@ import { setNavigator } from './src/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
   ResolveAuth: ResolveAuthScreen,
-  loginFlow: createStackNavigator(
-    {
-      Signin: SigninScreen,
-      Signup: SignupScreen
-    },
-    {
-      initialRouteName: 'Signin'
-    }
-  ),
+  loginFlow: createStackNavigator({
+    Signin: SigninScreen,
+    Signup: SignupScreen
+  }),
   mainFlow: createBottomTabNavigator({
     trackListDetailFlow: createStackNavigator(
       {
@@ -39,8 +34,7 @@ const switchNavigator = createSwitchNavigator({
         TrackDetail: TrackDetailScreen
       },
       {
-        initialRouteName: 'TrackList',
-        defaultNavigationOptions: {
+        navigationOptions: {
           title: 'Tracks',
           tabBarIcon: <FontAwesome name="th-list" size={20} />
         }
