@@ -43,7 +43,7 @@ export const tryLocalSignin = () => async dispatch => {
     dispatch({ type: SIGNIN, payload: token });
     navigate('TrackList');
   } else {
-    navigate('Signup');
+    navigate('Signin');
   }
 };
 

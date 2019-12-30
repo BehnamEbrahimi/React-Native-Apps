@@ -9,26 +9,42 @@ import reducers from './src/reducers';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { FontAwesome } from '@expo/vector-icons';
 
-import AccountScreen from './src/screens/AccountScreen';
+import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import SignupScreen from './src/screens/SignupScreen';
-import TrackCreateScreen from './src/screens/TrackCreateScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
+import TrackCreateScreen from './src/screens/TrackCreateScreen';
+import AccountScreen from './src/screens/AccountScreen';
 
 import { setNavigator } from './src/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
-  loginFlow: createStackNavigator({
-    Signin: SigninScreen,
-    Signup: SignupScreen
-  }),
+  ResolveAuth: ResolveAuthScreen,
+  loginFlow: createStackNavigator(
+    {
+      Signin: SigninScreen,
+      Signup: SignupScreen
+    },
+    {
+      initialRouteName: 'Signin'
+    }
+  ),
   mainFlow: createBottomTabNavigator({
-    trackListDetailFlow: createStackNavigator({
-      TrackList: TrackListScreen,
-      TrackDetail: TrackDetailScreen
-    }),
+    trackListDetailFlow: createStackNavigator(
+      {
+        TrackList: TrackListScreen,
+        TrackDetail: TrackDetailScreen
+      },
+      {
+        defaultNavigationOptions: {
+          title: 'Tracks',
+          tabBarIcon: <FontAwesome name="th-list" size={20} />
+        }
+      }
+    ),
     TrackCreate: TrackCreateScreen,
     Account: AccountScreen
   })
