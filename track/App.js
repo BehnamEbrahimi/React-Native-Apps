@@ -17,6 +17,8 @@ import TrackCreateScreen from './src/screens/TrackCreateScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
 import TrackDetailScreen from './src/screens/TrackDetailScreen';
 
+import { setNavigator } from './src/navigationRef';
+
 const switchNavigator = createSwitchNavigator({
   loginFlow: createStackNavigator({
     Signin: SigninScreen,
@@ -42,7 +44,11 @@ export const store = createStore(
 export default () => {
   return (
     <Provider store={store}>
-      <App />
+      <App
+        ref={navigator => {
+          setNavigator(navigator);
+        }}
+      />
     </Provider>
   );
 };

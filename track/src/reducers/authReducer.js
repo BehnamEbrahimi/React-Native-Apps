@@ -1,17 +1,31 @@
-import { LOGIN } from '../actions/types';
+import {
+  ADD_ERROR,
+  SIGNIN,
+  CLEAR_ERROR_MESSAGE,
+  SIGNOUT
+} from '../actions/types';
 
 export default function(
   state = {
-    user: null,
-    isLoggedIn: null
+    token: null,
+    errorMessage: ''
   },
   action
 ) {
   const { type, payload } = action;
 
   switch (type) {
-    case LOGIN:
-      return { ...state, isLoggedIn: true, user: payload.email };
+    case ADD_ERROR:
+      return { ...state, errorMessage: payload };
+
+    case SIGNIN:
+      return { errorMessage: '', token: payload };
+
+    case CLEAR_ERROR_MESSAGE:
+      return { ...state, errorMessage: '' };
+
+    case SIGNOUT:
+      return { token: null, errorMessage: '' };
 
     default:
       return state;

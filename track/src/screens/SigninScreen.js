@@ -1,31 +1,49 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Button } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { View, StyleSheet } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
 import { connect } from 'react-redux';
-// import {} from '../actions';
+import { signin, clearErrorMessage } from '../actions/authActions';
+import AuthForm from '../components/AuthForm';
+import NavLink from '../components/NavLink';
 
-const SigninScreen = ({ navigation }) => {
+const SigninScreen = ({ errorMessage, signin, clearErrorMessage }) => {
   return (
-    <>
-      <Text>SigninScreen</Text>
-      <Button
-        onPress={() => navigation.navigate('Signup')}
-        title="Go to Sign Up"
+    <View style={styles.container}>
+      <NavigationEvents onWillBlur={clearErrorMessage} />
+      <AuthForm
+        headerText="Sign In"
+        errorMessage={errorMessage}
+        submitButtonText="Sign In"
+        onSubmit={signin}
       />
-      <Button
-        onPress={() => navigation.navigate('mainFlow')}
-        title="Go to Main Flow"
+      <NavLink
+        routeName="Signup"
+        text="Don't have an account? Go back and sign up!"
       />
-    </>
+    </View>
   );
 };
 
-const styles = StyleSheet.create({});
-
-const mapStateToProps = state => {
+SigninScreen.navigationOptions = () => {
   return {
-    user: state.auth.user
+    header: null
   };
 };
 
-export default connect(mapStateToProps, {})(SigninScreen);
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    marginBottom: 200
+  }
+});
+
+const mapStateToProps = state => {
+  return {
+    errorMessage: state.auth.errorMessage
+  };
+};
+
+export default connect(mapStateToProps, { signin, clearErrorMessage })(
+  SigninScreen
+);
