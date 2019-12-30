@@ -13,7 +13,7 @@ const TrackCreateScreen = ({ addLocation, recording }) => {
   // isFocused provided by withNavigationFocus HOC imported from react-navigation is not working!
   const [isFocused, setIsFocused] = useState(true);
   const [err] = useLocation(recording || isFocused, location => {
-    addLocation(location, recording);
+    addLocation(location);
   });
 
   return (

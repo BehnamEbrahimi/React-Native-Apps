@@ -6,7 +6,8 @@ import { createTrack } from '../actions/trackActions';
 import {
   changeName,
   startRecording,
-  stopRecording
+  stopRecording,
+  reset
 } from '../actions/locationActions';
 import Spacer from './Spacer';
 
@@ -16,6 +17,7 @@ const TrackForm = ({
   changeName,
   startRecording,
   stopRecording,
+  reset,
   name,
   recording,
   locations
@@ -65,5 +67,6 @@ export default connect(mapStateToProps, {
   changeName,
   createTrack,
   startRecording,
-  stopRecording
+  stopRecording,
+  reset
 })(withNavigation(TrackForm));

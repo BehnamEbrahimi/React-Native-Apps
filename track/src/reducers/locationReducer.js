@@ -4,8 +4,7 @@ import {
   STOP_RECORDING,
   ADD_CURRENT_LOCATION,
   ADD_LOCATION,
-  RESET,
-  TRACK_SAVED
+  RESET
 } from '../actions/types';
 
 export default function(
@@ -37,9 +36,6 @@ export default function(
 
     case RESET:
       return { ...state, name: '', locations: [] };
-
-    case TRACK_SAVED:
-      return { ...state, locations: [] };
 
     default:
       return state;

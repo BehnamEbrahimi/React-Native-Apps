@@ -37,6 +37,7 @@ export default (shouldTrack, callback) => {
     }
 
     return () => {
+      // return cleanup function
       if (subscriber) {
         subscriber.remove();
       }

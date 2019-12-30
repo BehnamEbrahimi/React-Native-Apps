@@ -19,7 +19,7 @@ export const stopRecording = () => dispatch => {
   dispatch({ type: STOP_RECORDING });
 };
 
-export const addLocation = (location, recording) => (dispatch, getState) => {
+export const addLocation = location => (dispatch, getState) => {
   dispatch({ type: ADD_CURRENT_LOCATION, payload: location });
   if (getState().location.recording) {
     dispatch({ type: ADD_LOCATION, payload: location });

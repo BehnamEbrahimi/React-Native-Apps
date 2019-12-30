@@ -1,6 +1,6 @@
 import backend from '../apis/backend';
 
-import { FETCH_TRACKS, TRACK_SAVED } from './types';
+import { FETCH_TRACKS } from './types';
 
 export const fetchTracks = () => async dispatch => {
   const { data: tracks } = await backend.get('/tracks');
@@ -9,5 +9,4 @@ export const fetchTracks = () => async dispatch => {
 
 export const createTrack = (name, locations) => async dispatch => {
   await backend.post('/tracks', { name, locations });
-  dispatch({ type: TRACK_SAVED });
 };
