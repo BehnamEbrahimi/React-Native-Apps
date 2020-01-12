@@ -26,9 +26,10 @@ router.post('/', async (req, res) => {
 
   if (user) {
     user.code = code;
+    user.codeValid = true;
     await user.save();
   } else {
-    user = await new User({ phone, code }).save();
+    user = await new User({ phone, code, codeValid: true }).save();
   }
 
   res.send({ success: true });

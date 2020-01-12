@@ -1,10 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import SignUpForm from './components/SignUpForm';
+import SignInForm from './components/SignInForm';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <SignUpForm />
+      <SignInForm />
     </View>
   );
 }
@@ -14,6 +17,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
-  },
+    top: 100
+  }
 });
