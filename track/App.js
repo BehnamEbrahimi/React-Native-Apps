@@ -11,7 +11,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { FontAwesome } from '@expo/vector-icons';
 
-import ResolveAuthScreen from './src/screens/ResolveAuthScreen';
+import FacebookLoginScreen from './src/screens/FacebookLoginScreen';
 import SigninScreen from './src/screens/SigninScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import TrackListScreen from './src/screens/TrackListScreen';
@@ -22,7 +22,7 @@ import AccountScreen from './src/screens/AccountScreen';
 import { setNavigator } from './src/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
-  ResolveAuth: ResolveAuthScreen,
+  facebookLogin: FacebookLoginScreen,
   loginFlow: createStackNavigator({
     Signin: SigninScreen,
     Signup: SignupScreen

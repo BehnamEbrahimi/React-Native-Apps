@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { facebookLogin } from '../actions';
 
-const ResolveAuthScreen = ({ facebookLogin }) => {
+const FacebookLoginScreen = ({ facebookLogin }) => {
   useEffect(() => {
     facebookLogin();
   }, []);
   return null;
 };
 
-export default connect(null, { facebookLogin })(ResolveAuthScreen);
+export default connect(null, { facebookLogin })(FacebookLoginScreen);

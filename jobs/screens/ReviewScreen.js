@@ -12,7 +12,7 @@ const ReviewScreen = () => {
 
 ReviewScreen.navigationOptions = ({ navigation }) => {
   return {
-    headerRight: (
+    headerRight: () => (
       <TouchableOpacity onPress={() => navigation.navigate('settings')}>
         <FontAwesome name="gear" size={30} />
       </TouchableOpacity>

@@ -33,5 +33,5 @@ const doFacebookLogin = async dispatch => {
 export const logout = () => async dispatch => {
   await AsyncStorage.removeItem('fb_token');
   dispatch({ type: LOGOUT });
-  navigate('resolveAuth');
+  navigate('facebookLogin');
 };

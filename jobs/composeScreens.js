@@ -4,7 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 
-import ResolveAuthScreen from './screens/ResolveAuthScreen';
+import FacebookLoginScreen from './screens/FacebookLoginScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 import MapScreen from './screens/MapScreen';
 import DeckScreen from './screens/DeckScreen';
@@ -13,7 +13,7 @@ import ReviewScreen from './screens/ReviewScreen';
 
 const screens = createSwitchNavigator({
   welcome: WelcomeScreen,
-  resolveAuth: ResolveAuthScreen,
+  facebookLogin: FacebookLoginScreen,
   mainFlow: createBottomTabNavigator(
     {
       map: {
