@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, TouchableOpacity, AsyncStorage } from 'react-native';
+import { TouchableOpacity, AsyncStorage } from 'react-native';
 import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { MaterialCommunityIcons } from '@expo/vector-icons';

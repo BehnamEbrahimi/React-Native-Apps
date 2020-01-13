@@ -7,7 +7,7 @@ import { fetchJobs } from '../actions';
 
 const MapScreen = ({ fetchJobs, navigation }) => {
   const [mapLoaded, setMapLoaded] = useState(false);
-  const [currentLocation, setCurrentLocation] = useState({
+  const [region, setRegion] = useState({
     longitude: 151.2,
     latitude: -33.87,
     longitudeDelta: 0.04,
@@ -15,11 +15,11 @@ const MapScreen = ({ fetchJobs, navigation }) => {
   });
 
   const onRegionChangeComplete = region => {
-    setCurrentLocation(region);
+    setRegion(region);
   };
 
   const onButtonPress = () => {
-    fetchJobs(currentLocation, () => {
+    fetchJobs(region, () => {
       navigation.navigate('deck');
     });
   };
@@ -39,7 +39,7 @@ const MapScreen = ({ fetchJobs, navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <MapView
-        region={currentLocation}
+        region={region}
         style={{ flex: 1 }}
         onRegionChangeComplete={onRegionChangeComplete}
       />
