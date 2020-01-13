@@ -21,7 +21,8 @@ const doFacebookLogin = async dispatch => {
   });
 
   if (type === 'cancel') {
-    return dispatch({ type: FACEBOOK_LOGIN_FAIL });
+    dispatch({ type: FACEBOOK_LOGIN_FAIL });
+    return navigate('welcome');
   }
 
   await AsyncStorage.setItem('fb_token', token);
