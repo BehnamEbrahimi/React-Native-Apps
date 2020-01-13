@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native';
-import { Facebook } from 'expo-facebook';
-import { FACEBOOK_LOGIN_SUCCESS, FACEBOOK_LOGIN_FAIL } from './types';
+import * as Facebook from 'expo-facebook';
+import { FACEBOOK_LOGIN_SUCCESS, FACEBOOK_LOGIN_FAIL, LOGOUT } from './types';
 import { navigate } from '../navigationRef';
 
 export const facebookLogin = () => async dispatch => {
@@ -8,19 +8,17 @@ export const facebookLogin = () => async dispatch => {
 
   if (token) {
     dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
-    navigate('Map');
+    navigate('mainFlow');
   } else {
     doFacebookLogin(dispatch);
   }
 };
 
 const doFacebookLogin = async dispatch => {
-  let { type, token } = await Facebook.logInWithReadPermissionsAsync(
-    '196207057539134',
-    {
-      permissions: ['public_profile']
-    }
-  );
+  await Facebook.initializeAsync('467574077455384');
+  let { type, token } = await Facebook.logInWithReadPermissionsAsync({
+    permissions: ['public_profile']
+  });
 
   if (type === 'cancel') {
     return dispatch({ type: FACEBOOK_LOGIN_FAIL });
@@ -28,4 +26,11 @@ const doFacebookLogin = async dispatch => {
 
   await AsyncStorage.setItem('fb_token', token);
   dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
+  navigate('mainFlow');
+};
+
+export const logout = () => async dispatch => {
+  await AsyncStorage.removeItem('fb_token');
+  dispatch({ type: LOGOUT });
+  navigate('resolveAuth');
 };

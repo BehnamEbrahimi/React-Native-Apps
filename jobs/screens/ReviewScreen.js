@@ -1,10 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-const ReviewScreen = () => {
+const ReviewScreen = ({ navigation }) => {
   return (
     <View>
       <Text>ReviewScreen</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('settings')}>
+        <Text>Go to settings</Text>
+      </TouchableOpacity>
     </View>
   );
 };

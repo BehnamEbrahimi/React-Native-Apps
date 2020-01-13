@@ -1,10 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }) => {
   return (
     <View>
       <Text>WelcomeScreen</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('resolveAuth')}>
+        <Text>Go to auth</Text>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -22,7 +22,7 @@ import { setNavigator } from './navigationRef';
 
 const switchNavigator = createSwitchNavigator({
   welcome: WelcomeScreen,
-  ResolveAuth: ResolveAuthScreen,
+  resolveAuth: ResolveAuthScreen,
   mainFlow: createBottomTabNavigator(
     {
       map: {
