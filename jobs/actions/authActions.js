@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native';
 import * as Facebook from 'expo-facebook';
-import { FACEBOOK_LOGIN_SUCCESS, FACEBOOK_LOGIN_FAIL, LOGOUT } from './types';
+import { FACEBOOK_LOGIN_SUCCESS, FACEBOOK_LOGIN_FAIL } from './types';
 import { navigate } from '../navigationRef';
 
 export const facebookLogin = () => async dispatch => {
@@ -28,10 +28,4 @@ const doFacebookLogin = async dispatch => {
   await AsyncStorage.setItem('fb_token', token);
   dispatch({ type: FACEBOOK_LOGIN_SUCCESS, payload: token });
   navigate('mainFlow');
-};
-
-export const logout = () => async dispatch => {
-  await AsyncStorage.removeItem('fb_token');
-  dispatch({ type: LOGOUT });
-  navigate('facebookLogin');
 };

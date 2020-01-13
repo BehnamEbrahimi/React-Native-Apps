@@ -2,7 +2,11 @@ import React from 'react';
 import { createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-import { FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import {
+  MaterialCommunityIcons,
+  MaterialIcons,
+  Feather
+} from '@expo/vector-icons';
 
 import FacebookLoginScreen from './screens/FacebookLoginScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
@@ -19,14 +23,14 @@ const screens = createSwitchNavigator({
       map: {
         screen: MapScreen,
         navigationOptions: {
-          title: 'Location',
-          tabBarIcon: <FontAwesome name="location-arrow" size={20} />
+          title: 'Map',
+          tabBarIcon: <Feather name="map" size={20} />
         }
       },
       deck: {
         screen: DeckScreen,
         navigationOptions: {
-          title: 'Rate',
+          title: 'Jobs',
           tabBarIcon: (
             <MaterialCommunityIcons name="gesture-swipe-horizontal" size={20} />
           )
@@ -50,7 +54,7 @@ const screens = createSwitchNavigator({
         {
           navigationOptions: {
             title: 'Saved Jobs',
-            tabBarIcon: <FontAwesome name="th-list" size={20} />
+            tabBarIcon: <MaterialIcons name="favorite" size={20} />
           }
         }
       )

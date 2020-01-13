@@ -1,12 +1,19 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { connect } from 'react-redux';
+import Deck from '../components/Deck';
+import { likeJob } from '../actions';
 
-const DeckScreen = () => {
+const DeckScreen = ({ jobs, likeJob }) => {
   return (
-    <View>
-      <Text>DeckScreen</Text>
+    <View style={{ marginTop: 10 }}>
+      <Deck data={jobs} onSwipeRight={job => likeJob(job)} keyProp="jobkey" />
     </View>
   );
 };
 
-export default DeckScreen;
+function mapStateToProps({ jobs }) {
+  return { jobs };
+}
+
+export default connect(mapStateToProps, { likeJob })(DeckScreen);
