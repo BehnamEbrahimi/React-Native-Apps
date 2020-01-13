@@ -1,23 +1,19 @@
 import React, { useEffect } from 'react';
-import { Notifications } from 'expo';
-import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
+import { Alert } from 'react-native';
+
 import { Provider } from 'react-redux';
-import reducers from './reducers';
+import { PersistGate } from 'redux-persist/integration/react';
+import factory from './store';
+const { store, persistor } = factory();
 
 import { createAppContainer } from 'react-navigation';
 import screens from './composeScreens';
 import { setNavigator } from './navigationRef';
 
+import { Notifications } from 'expo';
 import registerForNotifications from './services/pushNotification';
 
 const App = createAppContainer(screens);
-
-export const store = createStore(
-  reducers,
-  composeWithDevTools(applyMiddleware(thunk))
-);
 
 export default () => {
   useEffect(() => {
@@ -36,11 +32,13 @@ export default () => {
 
   return (
     <Provider store={store}>
-      <App
-        ref={navigator => {
-          setNavigator(navigator);
-        }}
-      />
+      <PersistGate loading={null} persistor={persistor}>
+        <App
+          ref={navigator => {
+            setNavigator(navigator);
+          }}
+        />
+      </PersistGate>
     </Provider>
   );
 };

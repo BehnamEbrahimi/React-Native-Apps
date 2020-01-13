@@ -6,10 +6,10 @@ export const fetchJobs = (
   callback
 ) => async dispatch => {
   try {
-    let { data: jobs } = await indeed.get(
-      `latitude=${latitude}&longitude=${longitude}`
-    );
-    jobs = [
+    // const { data: jobs } = await indeed.get(
+    //   `latitude=${latitude}&longitude=${longitude}`
+    // );
+    const jobs = [
       {
         jobkey: '1',
         latitude: -33.87,

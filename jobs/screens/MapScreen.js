@@ -15,7 +15,7 @@ const MapScreen = ({ fetchJobs, navigation }) => {
   });
 
   const onRegionChangeComplete = region => {
-    setRegion(region);
+    setRegion(region); // just like the controlled text input
   };
 
   const onButtonPress = () => {

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "357175549431",
+    "firebase_url": "https://jobs-e2db4.firebaseio.com",
+    "project_id": "jobs-e2db4",
+    "storage_bucket": "jobs-e2db4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357175549431:android:f94af59fba72aa0c6362f2",
+        "android_client_info": {
+          "package_name": "com.behnam.jobs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "357175549431-4uuv05d8ib8udl8tl52tpnt4e7v31a7j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1Y3Ek8g3OH1YS0fWuwGyrvfKxlRKIbMs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "357175549431-4uuv05d8ib8udl8tl52tpnt4e7v31a7j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

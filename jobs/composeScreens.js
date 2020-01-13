@@ -24,15 +24,21 @@ const screens = createSwitchNavigator({
         screen: MapScreen,
         navigationOptions: {
           title: 'Map',
-          tabBarIcon: <Feather name="map" size={20} />
+          tabBarIcon: ({ tintColor }) => (
+            <Feather name="map" size={20} color={tintColor} />
+          )
         }
       },
       deck: {
         screen: DeckScreen,
         navigationOptions: {
           title: 'Jobs',
-          tabBarIcon: (
-            <MaterialCommunityIcons name="gesture-swipe-horizontal" size={20} />
+          tabBarIcon: ({ tintColor }) => (
+            <MaterialCommunityIcons
+              name="gesture-swipe-horizontal"
+              size={20}
+              color={tintColor}
+            />
           )
         }
       },
@@ -54,7 +60,9 @@ const screens = createSwitchNavigator({
         {
           navigationOptions: {
             title: 'Saved Jobs',
-            tabBarIcon: <MaterialIcons name="favorite" size={20} />
+            tabBarIcon: ({ tintColor }) => (
+              <MaterialIcons name="favorite" size={20} color={tintColor} />
+            )
           }
         }
       )
